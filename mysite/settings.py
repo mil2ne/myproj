@@ -40,7 +40,7 @@ SECRET_KEY = env.str(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     # third apps
     "django_extensions",
     "template_partials",
+    "django_htmx",
     # local apps
     "core",
 ]
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 if DEBUG:
@@ -102,10 +104,21 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": "localhost",  # 서버 주소
+        "PORT": "5432",  # 서버 포트
+        "NAME": "myproj",  # 데이터베이스 명
+        "USER": "myuser",  # 유저명
+        "PASSWORD": "mypw",  # 암호
     }
 }
 
@@ -151,4 +164,4 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-INTERNAL_IPS = env.list("INTERNAL_IPS", ["127.0.0.1"])
+INTERNAL_IPS = "127.0.0.1"
