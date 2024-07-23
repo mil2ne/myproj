@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "django_htmx",
     "template_partials",
     # local apps
+    "accounts",
     "core",
 ]
 
@@ -119,11 +120,14 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "HOST": "localhost",  # 서버 주소
         "PORT": "5432",  # 서버 포트
-        "NAME": "myproj",  # 데이터베이스 명
+        "NAME": "sapporo",  # 데이터베이스 명
         "USER": "myuser",  # 유저명
         "PASSWORD": "mypw",  # 암호
     }
 }
+
+# Custom User Model
+AUTH_USER_MODEL = "accounts.User"
 
 
 # Password validation
