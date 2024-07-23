@@ -6,3 +6,4 @@ psycopg2-binary==2.9.9
 django-htmx==1.18.0
 django-crispy-forms==2.1
 crispy-bootstrap5==2024.2
+django_components==0.84
