@@ -2,5 +2,5 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    {% crispy form %}
+    {% include "_crispy_form.html" with form=form form_title=form_title %}
 {% endblock %}
